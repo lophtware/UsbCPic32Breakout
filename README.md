@@ -3,7 +3,7 @@
 # USB Type-C / PIC32 Breakout and Development Board
 This is the GitHub repository containing the code, schematics and documentation for the USB Type-C / PIC32 Breakout and Development Board.
 
-See [Hello, World !](https://github.com/lophtware/UsbCPic32Breakout/wiki/HelloWorld.md) for the obligatory blinking LED, and the
+See [Hello, World !](https://github.com/lophtware/UsbCPic32Breakout/wiki/HelloWorld) for the obligatory blinking LED, and the
 [wiki](https://github.com/lophtware/UsbCPic32Breakout/wiki/) for project documentation.  The wiki is also mirrored by
 [GitHub Pages](https://lophtware.github.io/) and the company's site is [www.lophtware.co.uk](https://www.lophtware.co.uk/).
 
@@ -14,12 +14,12 @@ how it works.
 ## Implemented Features
 The following list is the current state of the firmware features, both implemented and planned:
 
-  - [x] [Non-Volatile Configuration](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/Core/Interface.md)
-  - [x] [GPIO / Bit-Banging](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/Core/Interface.md)
-  - [x] [Pin Change Notifications](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/Core/Interface.md)
-  - [x] [USB Status Flags (Current Limit, Cable Orientation, Charger Detection, etc.)](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/Usb/Interface.md)
-  - [x] I<sup>2</sup>C [Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/I2c/Interface.md) and [Slave](https://github.com/lophtware/UsbCPic32Breakout/wiki/I2c/Index.md)
-  - [x] [SPI / I<sup>2</sup>S Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel/Spi/Interface.md)
+  - [x] [Non-Volatile Configuration](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Core-Interface)
+  - [x] [GPIO / Bit-Banging](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Core-Interface)
+  - [x] [Pin Change Notifications](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Core-Interface)
+  - [x] [USB Status Flags (Current Limit, Cable Orientation, Charger Detection, etc.)](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Usb-Interface)
+  - [x] I<sup>2</sup>C [Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-I2c-Interface) and [Slave](https://github.com/lophtware/UsbCPic32Breakout/wiki-I2c-Index)
+  - [x] [SPI / I<sup>2</sup>S Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Spi-Interface)
   - [ ] UART Master
   - [ ] PWM
   - [ ] CCP
