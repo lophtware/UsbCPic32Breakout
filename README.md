@@ -18,7 +18,7 @@ The following list is the current state of the firmware features, both implement
   - [x] [GPIO / Bit-Banging](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Core-Interface)
   - [x] [Pin Change Notifications](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Core-Interface)
   - [x] [USB Status Flags (Current Limit, Cable Orientation, Charger Detection, etc.)](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Usb-Interface)
-  - [x] I<sup>2</sup>C [Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-I2c-Interface) and [Slave](https://github.com/lophtware/UsbCPic32Breakout/wiki-I2c-Index)
+  - [x] I<sup>2</sup>C [Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-I2c-Interface) and [Slave](https://github.com/lophtware/UsbCPic32Breakout/wiki/I2c-Index)
   - [x] [SPI / I<sup>2</sup>S Master](https://github.com/lophtware/UsbCPic32Breakout/wiki/UsbDeviceModel-Spi-Interface)
   - [ ] UART Master
   - [ ] PWM
