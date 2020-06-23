@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"path": "firmware"
+		},
+		{
+			"path": "examples"
+		},
+		{
+			"path": "../doc/wiki"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"usb_config.h": "c",
+			"usb.h": "c",
+			"configuration.h": "c",
+			"fault.h": "c",
+			"*.txt": "c",
+			"freertos.h": "c",
+			"usbpininterface.h": "c",
+			"i2c.h": "c",
+			"deviceinfoi2cbank.h": "c",
+			"version.h": "c",
+			"usbi2cinterface.h": "c",
+			"nvm.h": "c",
+			"benchtesting.h": "c",
+			"usb_hid.h": "c",
+			"kmem.h": "c"
+		}
+	}
+}

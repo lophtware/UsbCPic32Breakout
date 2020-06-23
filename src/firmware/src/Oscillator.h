@@ -1,0 +1,6 @@
+#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_OSCILLATOR_H
+#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_OSCILLATOR_H
+
+extern void oscillatorInitialise(void);
+
+#endif

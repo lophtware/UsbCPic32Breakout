@@ -1,0 +1,11 @@
+~*
+*.o
+*.a
+*.elf
+*.hex
+*.su
+*.map
+*.lst
+
+MPLABXLog*.xml*
+log.*

@@ -1,0 +1,34 @@
+{
+  "C_Cpp.default.includePath": [
+    "src",
+    "src/Usb",
+    "src/Usb/m-stack/include"
+  ],
+  "C_Cpp.default.defines": [],
+  "C_Cpp.default.intelliSenseMode": "gcc-x86",
+  "C_Cpp.default.compilerPath": "/opt/microchip/xc32/v2.30/bin/xc32-gcc",
+  "C_Cpp.default.cStandard": "c99",
+  "C_Cpp.exclusionPolicy": "checkFilesAndFolders",
+  "files.exclude": {
+    "**/~*": true,
+    "**/*.o": true,
+    "**/*.a": true,
+    "**/*.elf": true,
+    "**/*.hex": true,
+    "**/*.su": true,
+    "**/*.map": true,
+    "**/*.lst": true,
+    "**/MPLABXLog*.xml*": true,
+    "**/log.*": true,
+    "~*": "explorerExcludedFiles",
+    "*.o": "explorerExcludedFiles",
+    "*.a": "explorerExcludedFiles",
+    "*.elf": "explorerExcludedFiles",
+    "*.hex": "explorerExcludedFiles",
+    "*.su": "explorerExcludedFiles",
+    "*.map": "explorerExcludedFiles",
+    "*.lst": "explorerExcludedFiles",
+    "MPLABXLog*.xml*": "explorerExcludedFiles",
+    "log.*": "explorerExcludedFiles"
+  }
+}

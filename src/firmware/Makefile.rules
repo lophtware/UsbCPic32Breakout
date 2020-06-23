@@ -1,0 +1,8 @@
+%.o: %.c
+	$(CC) $(CFLAGS) -o $@ $(abspath $<)
+
+%.o: %.S
+	$(AS) $(ASFLAGS) -o $@ $(abspath $<)
+
+%.a: %
+	$(MAKE) -C $< all

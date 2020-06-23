@@ -1,0 +1,12 @@
+* text eol=crlf
+* text eol=lf
+*.prj binary
+*.sch binary
+*.pcb binary
+*.mop binary
+*.cmx binary
+*.cml binary
+*.psx binary
+*.psl binary
+*.ssx binary
+*.ssl binary

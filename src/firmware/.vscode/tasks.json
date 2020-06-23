@@ -1,0 +1,48 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "make",
+			"type": "shell",
+			"command": "make",
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": {
+				"base": "$gcc",
+				"fileLocation": "absolute"
+			}
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": [
+				"make",
+				"clean"
+			],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "install",
+			"type": "shell",
+			"command": [
+				"make",
+				"install"
+			],
+			"group": "build",
+			"problemMatcher": []
+		},
+		{
+			"label": "cicd",
+			"type": "shell",
+			"command": [
+				"make",
+				"cicd"
+			],
+			"group": "build",
+			"problemMatcher": []
+		}
+	]
+}

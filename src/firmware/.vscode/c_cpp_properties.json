@@ -1,0 +1,20 @@
+{
+    "configurations": [
+        {
+            "name": "PIC32MM0256GPM028",
+            "cppStandard": "c++17",
+            "defines": [
+                "__32MM0256GPM028__"
+            ],
+            "includePath": [
+                "src/Usb",
+                "src/FreeRtos",
+                "src/FreeRtos/FreeRtos/include",
+                "src/FreeRtos/FreeRtos/portable/MPLAB/PIC32MM"
+            ],
+            "cStandard": "c99",
+            "compilerPath": "/opt/microchip/xc32/v2.30/bin/xc32-gcc"
+        }
+    ],
+    "version": 4
+}
