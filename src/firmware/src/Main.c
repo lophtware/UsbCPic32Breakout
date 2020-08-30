@@ -9,7 +9,8 @@
 #include "Pins.h"
 #include "Dma.h"
 #include "Configuration.h"
-#include "Fusb303.h"
+#include "Adc.h"
+#include "UsbCc.h"
 #include "I2c.h"
 #include "Spi.h"
 #include "Usb.h"
@@ -68,9 +69,10 @@ static void initialise(void)
 	pinsInitialise();
 	dmaInitialise();
 	configurationInitialise();
+	adcInitialise();
 
-	QueueHandle_t usbFlagEvents = xQueueCreate(8, sizeof(struct Fusb303Event));
-	fusb303Initialise(usbFlagEvents);
+	QueueHandle_t usbFlagEvents = xQueueCreate(8, sizeof(struct UsbCcEvent));
+	usbCcInitialise(usbFlagEvents);
 
 	QueueHandle_t i2cEvents = xQueueCreate(8, sizeof(struct I2cEvent));
 	i2cInitialise(i2cBanks, sizeof(i2cBanks) / sizeof(const struct I2cBank), i2cEvents);

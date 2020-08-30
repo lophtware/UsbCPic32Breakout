@@ -178,43 +178,47 @@ cat <<EOF | patch src/pic32.c
 ---
 > 		(pic32_map[pic32_index].datasheet == DS60001324B) ||
 > 		(pic32_map[pic32_index].datasheet == DS60001387D)) {	/* MM */
-947c955,956
-< 		(pic32_map[pic32_index].datasheet != DS60001324B)) {	/* ! MM */
+949c957,962
+< 		statusVal = pic32_xferdata(PIC32_MCHP_STATUS) & PIC32_MCHP_STATUS_MASK;
 ---
-> 		(pic32_map[pic32_index].datasheet != DS60001324B) &&
-> 		(pic32_map[pic32_index].datasheet != DS60001387D)) {	/* ! MM */
-1185c1194
+> 		for (int i = 0; i < 10; i++) {
+> 			statusVal = pic32_xferdata(PIC32_MCHP_STATUS) & PIC32_MCHP_STATUS_MASK;
+> 			if (statusVal == (PIC32_MCHP_STATUS_CPS | PIC32_MCHP_STATUS_CFGRDY | PIC32_MCHP_STATUS_FAEN))
+> 				break;
+> 		}
+> 
+1185c1198
 <  * Download the PE for PIC32MM devices
 ---
 >  * Download the PE for PIC32MM GPL devices
-1190c1199
+1190c1203
 < pic32_download_custom_pe_mm(uint8_t *pe, uint32_t nbytes)
 ---
 > pic32_download_custom_pe_mm_gpl(uint8_t *pe, uint32_t nbytes)
-1241d1249
+1241d1253
 < #if 0
-1243c1251,1253
+1243c1255,1259
 <  * Download the PE for PIC32MM devices
 ---
 >  * Download the PE for PIC32MM GPM devices
 >  *
 >  * DS60001364D-pages 22 and 23
-1245,1246c1255
+>  *
+>  * XXX DATA-SHEET INVALID XXX
+1245,1246c1261
 <  * DS60001145P-page 25
 <  * DS60001364C-page 23
 ---
->  * XXX DATA-SHEET INVALID XXX
-1248c1257,1259
+>  * BUT THIS POST IS SPOT-ON:
+1248c1263
 <  * XXX DATA-SHEET INVALID
 ---
->  * BUT THIS POST IS SPOT-ON:
->  *
 >  *     https://www.microchip.com/forums/m973762.aspx
-1251c1262
+1251c1266
 < pic32_download_pe_mm(uint8_t *pe, uint32_t nbytes)
 ---
 > pic32_download_custom_pe_mm_gpm(uint8_t *pe, uint32_t nbytes)
-1255,1277c1266,1276
+1255,1277c1270,1280
 < 		0xDEAD41A7, // lui a3, 0xdead
 < 		0xFF2041A6, // lui a2, 0xff20
 < 		0xFF2041A5, // lui al, 0xff20
@@ -250,49 +254,49 @@ cat <<EOF | patch src/pic32.c
 > 		0x33396D2E,
 > 		0x45990301,
 > 		0x0C000C00
-1279d1277
+1279d1281
 < 	#define PESIZE (sizeof(peloader) / sizeof(uint32_t))
-1281c1279
+1281c1283
 < printf("%s() 1\n", __func__);
 ---
 > 	#define PESIZE (sizeof(peloader) / sizeof(uint32_t))
-1287c1285
+1287c1289
 < 	 * ori a0,a0,0x200 XXX
 ---
 > 	 * ori a0,a0,0x200
-1312c1310
+1312c1314
 < 	 * ori t9,t9,0x200 XXX
 ---
 > 	 * ori t9,t9,0x201
-1313a1312,1313
+1313a1316,1317
 > 	 * nop16; nop16
 > 	 * nop16; nop16
-1317c1317
+1317c1321
 < 	pic32_xferinstruction(0x02005339);
 ---
 > 	pic32_xferinstruction(0x02015339);
-1318a1319,1320
+1318a1323,1324
 > 	pic32_xferinstruction(0x0C000C00);
 > 	pic32_xferinstruction(0x0C000C00);
-1324,1325d1325
+1324,1325d1329
 < printf("%s() 2\n", __func__);
 < 
-1341,1342d1340
+1341,1342d1344
 < printf("%s() 3\n", __func__);
 < 
-1347d1344
+1347d1348
 < #endif
-1450c1447,1448
+1450c1451,1452
 < 	case DS60001324B: /* PIC32MM */
 ---
 > 	case DS60001324B: /* PIC32MM GPL */
 > 	case DS60001387D: /* PIC32MM GPM */
-1683c1681,1682
+1683c1685,1686
 < 	case DS60001324B: /* PIC32MM */
 ---
 > 	case DS60001324B: /* PIC32MM GPL */
 > 	case DS60001387D: /* PIC32MM GPM */
-1811,1812c1810,1814
+1811,1812c1814,1818
 < 	case DS60001324B: /* PIC32MM */
 < 		pic32_download_custom_pe_mm(pe, nbytes);
 ---
@@ -301,7 +305,7 @@ cat <<EOF | patch src/pic32.c
 > 		break;
 > 	case DS60001387D: /* PIC32MM GPM */
 > 		pic32_download_custom_pe_mm_gpm(pe, nbytes);
-1917,1918c1919,1923
+1917,1918c1923,1927
 < 	case DS60001324B: /* PIC32MM */
 < 		pic32_conf.devidaddr = PIC32MM_DEVID;
 ---
@@ -310,12 +314,12 @@ cat <<EOF | patch src/pic32.c
 > 		break;
 > 	case DS60001387D: /* PIC32MM GPM */
 > 		pic32_conf.devidaddr = PIC32MM_GPM_DEVID;
-1948c1953,1954
+1948c1957,1958
 < 	case DS60001324B: /* PIC32MM */
 ---
 > 	case DS60001324B: /* PIC32MM GPL */
 > 	case DS60001387D: /* PIC32MM GPM */
-2314c2320,2321
+2314c2324,2325
 < 	case DS60001324B: /* PIC32MM */
 ---
 > 	case DS60001324B: /* PIC32MM GPL */
@@ -355,10 +359,23 @@ SLEEP=1
 BITRULES=0x0F00
 BUSY=0
 
-VPP=25
+# Full Fat USB-C / PIC32MM Provisioning HAT:
+#VPP=18
+#PGM=-1
+#PGC=17
+#PGD=16
+
+# Lite USB-C / PIC32MM Provisioning HAT:
+VPP=10
 PGM=-1
 PGC=17
-PGD=16
+PGD=27
+
+# ICSP HAT:
+#VPP=4
+#PGM=-1
+#PGC=22
+#PGD=27
 
 DEBUG=10
 EOF

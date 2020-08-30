@@ -5,7 +5,7 @@ export XC32_DIR=/opt/microchip/xc32/v2.30/bin
 export MPLABX_DIR=/opt/microchip/mplabx/v5.05
 export MAKE=make
 export FREERTOS_INCLUDES=-I$(BASE_DIR)/src/FreeRtos -I$(BASE_DIR)/src/FreeRtos/FreeRtos/include -I$(BASE_DIR)/src/FreeRtos/FreeRtos/portable/MPLAB/PIC32MM
-# export DEFINES=-DENABLE_BENCH_TESTING
+export DEFINES=#-DBOARD_VARIANT_LITE #-DENABLE_BENCH_TESTING
 export CFLAGS_COMMON=-mprocessor=32MM0256GPM028 -mreserve=data@0x00000000:0x000001ff -mno-float -g3 -O2 -std=c99 -pedantic-errors -Wall -fstack-usage $(FREERTOS_INCLUDES) $(DEFINES)
 export CC=$(XC32_DIR)/xc32-gcc
 export CFLAGS=$(CFLAGS_COMMON) -c

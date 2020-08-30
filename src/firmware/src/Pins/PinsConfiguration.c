@@ -119,20 +119,7 @@ static uint8_t getPinPeripheralOutput(uint8_t rpIndex);
 static void applyPinPeripheralInput(uint8_t rpIndex, union RpinrMap rpinr);
 static void applyPinPeripheralOutput(uint8_t rpIndex, uint8_t rpor);
 
-const struct Pin pinsConfigurable[PINS_NUMBER_CONFIGURABLE] =
-{
-	{ .bank = 0, .index = 2 },
-	{ .bank = 0, .index = 3 },
-	{ .bank = 0, .index = 4 },
-	{ .bank = 1, .index = 0 },
-	{ .bank = 1, .index = 1 },
-	{ .bank = 1, .index = 2 },
-	{ .bank = 1, .index = 3 },
-	{ .bank = 1, .index = 4 },
-	{ .bank = 1, .index = 5 },
-	{ .bank = 1, .index = 7 },
-	{ .bank = 2, .index = 9 }
-};
+const struct Pin pinsConfigurable[PINS_NUMBER_CONFIGURABLE] = PINS_CONFIGURABLE_AS_ARRAY;
 
 static uint32_t CNENISCONTINUOUSA;
 static uint32_t CNENISCONTINUOUSB;
@@ -258,6 +245,7 @@ static void applyPinPeripheralOutputMap(void)
 	MASKED_SET(RPOR0, CONFIGURABLE_RPOR0_MASK, pins->peripheralOutputMap.rpor0);
 	MASKED_SET(RPOR1, CONFIGURABLE_RPOR1_MASK, pins->peripheralOutputMap.rpor1);
 	MASKED_SET(RPOR2, CONFIGURABLE_RPOR2_MASK, pins->peripheralOutputMap.rpor2);
+	MASKED_SET(RPOR3, CONFIGURABLE_RPOR3_MASK, pins->peripheralOutputMap.rpor3);
 	MASKED_SET(RPOR4, CONFIGURABLE_RPOR4_MASK, pins->peripheralOutputMap.rpor4);
 	syskeyUnlockThen(ppsLock);
 }
@@ -309,6 +297,7 @@ static void getPinPeripheralOutputMap(struct PinPeripheralOutputMap *map)
 	map->rpor0 = RPOR0;
 	map->rpor1 = RPOR1;
 	map->rpor2 = RPOR2;
+	map->rpor3 = RPOR3;
 	map->rpor4 = RPOR4;
 }
 

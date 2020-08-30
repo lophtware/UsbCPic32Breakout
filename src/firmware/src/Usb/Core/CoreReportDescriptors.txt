@@ -123,6 +123,36 @@
 	0x09, 0x3a,                    //   USAGE (Counted Buffer)
 	0x92, 0x20, 0x01,              //   OUTPUT (Data,Ary,Abs,NPrf,Buf)
 
+#ifdef BOARD_VARIANT_LITE
+	0x85, 0x40,                    //   REPORT_ID (64)
+	0x95, 0x12,                    //   REPORT_COUNT (18)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x82, 0x20, 0x01,              //   INPUT (Data,Ary,Abs,NPrf,Buf)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x92, 0x20, 0x01,              //   OUTPUT (Data,Ary,Abs,NPrf,Buf)
+
+	0x85, 0x41,                    //   REPORT_ID (65)
+	0x95, 0x12,                    //   REPORT_COUNT (18)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x82, 0x20, 0x01,              //   INPUT (Data,Ary,Abs,NPrf,Buf)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x92, 0x20, 0x01,              //   OUTPUT (Data,Ary,Abs,NPrf,Buf)
+
+	0x85, 0x58,                    //   REPORT_ID (88)
+	0x95, 0x12,                    //   REPORT_COUNT (18)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x82, 0x20, 0x01,              //   INPUT (Data,Ary,Abs,NPrf,Buf)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x92, 0x20, 0x01,              //   OUTPUT (Data,Ary,Abs,NPrf,Buf)
+
+	0x85, 0x59,                    //   REPORT_ID (89)
+	0x95, 0x12,                    //   REPORT_COUNT (18)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x82, 0x20, 0x01,              //   INPUT (Data,Ary,Abs,NPrf,Buf)
+	0x09, 0x3a,                    //   USAGE (Counted Buffer)
+	0x92, 0x20, 0x01,              //   OUTPUT (Data,Ary,Abs,NPrf,Buf)
+#endif
+
 #ifdef ENABLE_BENCH_TESTING
 	0x85, 0xff,                    //   REPORT_ID (255)
 	0x95, 0x04,                    //   REPORT_COUNT (4)

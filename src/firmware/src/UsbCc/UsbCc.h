@@ -1,0 +1,6 @@
+#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_USBCC_H
+#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_USBCC_H
+#include "../UsbCc.h"
+#include "../BoardVariants/UsbCc.h"
+
+#endif

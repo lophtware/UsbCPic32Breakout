@@ -19,10 +19,11 @@ OBJ_FILES=\
 	Dma.o \
 	BenchTesting.a \
 	Usb.a \
-	Fusb303.a \
+	UsbCc.a \
 	I2c.a \
 	Spi.a \
 	Pins.a \
+	Adc.a \
 	FreeRtos.a
 
 ARCHIVES=$(filter %.a, $(OBJ_FILES))

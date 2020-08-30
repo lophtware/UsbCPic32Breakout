@@ -1,0 +1,10 @@
+#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_BOARDVARIANTS_PINS_H
+#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_BOARDVARIANTS_PINS_H
+
+#ifdef BOARD_VARIANT_LITE
+#include "Lite/Pins.h"
+#else
+#include "FullFat/Pins.h"
+#endif
+
+#endif

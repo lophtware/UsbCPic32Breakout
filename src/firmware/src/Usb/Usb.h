@@ -214,7 +214,7 @@ extern bool usbDescriptorsSetConfigurationName(uint8_t descriptorIndex, const ui
 extern void usbConfigurationInitialise(void);
 extern void usbConfigurationSet(uint8_t configuration);
 extern void usbConfigurationApply(const struct UsbEvent *event);
-extern void usbInitialiseAfterFusb303(void);
+extern void usbInitialiseAfterUsbCc(void);
 
 extern uint8_t usbMapEndpointToInterface(uint8_t endpoint);
 extern uint8_t usbMapInterfaceToEndpoint(uint8_t interface);

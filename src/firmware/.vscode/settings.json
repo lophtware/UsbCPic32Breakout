@@ -19,16 +19,6 @@
     "**/*.map": true,
     "**/*.lst": true,
     "**/MPLABXLog*.xml*": true,
-    "**/log.*": true,
-    "~*": "explorerExcludedFiles",
-    "*.o": "explorerExcludedFiles",
-    "*.a": "explorerExcludedFiles",
-    "*.elf": "explorerExcludedFiles",
-    "*.hex": "explorerExcludedFiles",
-    "*.su": "explorerExcludedFiles",
-    "*.map": "explorerExcludedFiles",
-    "*.lst": "explorerExcludedFiles",
-    "MPLABXLog*.xml*": "explorerExcludedFiles",
-    "log.*": "explorerExcludedFiles"
+    "**/log.*": true
   }
 }

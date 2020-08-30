@@ -2,7 +2,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "../Fault.h"
+#include "../../Fault.h"
+#include "../../UsbCc.h"
 
 #include "Fusb303.h"
 
@@ -93,7 +94,7 @@ static void fusb303BroadcastFlagsOnReadStatusDone(const struct Fusb303Transactio
 
 	uint8_t status = transaction->reg.value;
 	uint8_t orientation = (status >> 4) & 0x03;
-	struct Fusb303Event event =
+	struct UsbCcEvent event =
 	{
 		.as =
 		{
@@ -148,7 +149,7 @@ static void fusb303BroadcastFlagsOnReadStatus1Done(const struct Fusb303Transacti
 	}
 
 	uint8_t status1 = transaction->reg.value;
-	struct Fusb303Event event =
+	struct UsbCcEvent event =
 	{
 		.as =
 		{
@@ -184,9 +185,9 @@ static void fusb303BroadcastFlagsOnReadTypeDone(const struct Fusb303Transaction 
 	}
 
 	uint8_t type = transaction->reg.value;
-	struct Fusb303Event event =
+	struct UsbCcEvent event =
 	{
-		.header = EVENT_QUEUE_HEADER_INIT(FUSB303_MODULE_ID, FUSB303_EVENT_FLAGS_CHANGED),
+		.header = EVENT_QUEUE_HEADER_INIT(USBCC_MODULE_ID, USBCC_EVENT_FLAGS_CHANGED),
 		.as =
 		{
 			.flagsChanged =

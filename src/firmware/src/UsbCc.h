@@ -1,14 +1,14 @@
-#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_FUSB303_H
-#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_FUSB303_H
+#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_H
+#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_H
 #include <stdint.h>
 #include <stdbool.h>
 #include "FreeRtos.h"
 #include "EventQueueHeader.h"
 
-#define FUSB303_MODULE_ID 0x02
-#define FUSB303_EVENT_FLAGS_CHANGED 0x01
+#define USBCC_MODULE_ID 0x02
+#define USBCC_EVENT_FLAGS_CHANGED 0x01
 
-struct Fusb303Event
+struct UsbCcEvent
 {
 	struct EventQueueHeader header;
 
@@ -18,7 +18,7 @@ struct Fusb303Event
 
 		struct
 		{
-			union Fusb303EventFlags
+			union UsbCcEventFlags
 			{
 				struct
 				{
@@ -40,8 +40,8 @@ struct Fusb303Event
 	} as;
 };
 
-extern void fusb303Initialise(QueueHandle_t eventQueue);
-extern bool fusb303IsInitialised(void);
-extern uint16_t fusb303GetCurrentLimitMilliamps(void);
+extern void usbCcInitialise(QueueHandle_t eventQueue);
+extern bool usbCcIsInitialised(void);
+extern uint16_t usbCcGetCurrentLimitMilliamps(void);
 
 #endif

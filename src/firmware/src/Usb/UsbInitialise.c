@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 #include "../Fault.h"
-#include "../Fusb303.h"
+#include "../UsbCc.h"
 #include "../FreeRtos.h"
 
 #include "Usb.h"
@@ -54,9 +54,9 @@ void usbInitialise(QueueHandle_t flagsEventQueue, QueueHandle_t i2cEventQueue)
 	}
 }
 
-void usbInitialiseAfterFusb303(void)
+void usbInitialiseAfterUsbCc(void)
 {
-	while (!fusb303IsInitialised())
+	while (!usbCcIsInitialised())
 		vTaskDelay(1);
 
 	IPC7bits.USBIP = 3;

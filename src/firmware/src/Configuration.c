@@ -123,6 +123,7 @@
 					.rpor0 = 0, \
 					.rpor1 = 0, \
 					.rpor2 = 0, \
+					.rpor3 = 0, \
 					.rpor4 = 0 \
 				} \
 			}, \
@@ -138,19 +139,7 @@
 			.assignments = \
 			{ \
 				.map = \
-				{ \
-					{ .pin = PACK_PIN('A', 2), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000000000100ull }, \
-					{ .pin = PACK_PIN('A', 3), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000001000100ull }, \
-					{ .pin = PACK_PIN('A', 4), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000002000100ull }, \
-					{ .pin = PACK_PIN('B', 0), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000003000100ull }, \
-					{ .pin = PACK_PIN('B', 1), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000004000100ull }, \
-					{ .pin = PACK_PIN('B', 2), .suspendBehaviour = 0x40, .interface = 4, .args = 0ull }, \
-					{ .pin = PACK_PIN('B', 3), .suspendBehaviour = 0x40, .interface = 4, .args = 0ull }, \
-					{ .pin = PACK_PIN('B', 4), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000007000100ull }, \
-					{ .pin = PACK_PIN('B', 5), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000008000100ull }, \
-					{ .pin = PACK_PIN('B', 7), .suspendBehaviour = 0x41, .interface = 0, .args = 0x0000000009000100ull }, \
-					{ .pin = PACK_PIN('C', 9), .suspendBehaviour = 0x41, .interface = 0, .args = 0x000000000a000100ull } \
-				} \
+				PINS_ASSIGNMENTS_AS_ARRAY \
 			} \
 		}, \
 		.peripherals = \
@@ -260,7 +249,12 @@ static volatile const struct ConfigurationNvmPage configurationNvmPage =
 		}
 	},
 	.firmwareVersion = VERSION_FIRMWARE_AS_WORD,
-	.crc32 = 0xd09547e1ul
+
+#ifndef BOARD_VARIANT_LITE
+	.crc32 = 0x12291970ul
+#else
+	.crc32 = 0xac84c1e1ul
+#endif
 };
 
 static const struct Configuration configurationSafeMode = DEFAULT_CONFIGURATION_NAMED("<\0!\0 \0S\0A\0F\0E\0 \0M\0O\0D\0E\0 \0!\0>\0");

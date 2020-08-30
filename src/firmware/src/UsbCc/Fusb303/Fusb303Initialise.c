@@ -2,8 +2,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-#include "../Fault.h"
-#include "../FreeRtos.h"
+#include "../../Fault.h"
+#include "../../FreeRtos.h"
 
 #include "Fusb303.h"
 

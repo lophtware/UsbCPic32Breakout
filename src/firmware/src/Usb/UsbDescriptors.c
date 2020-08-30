@@ -32,7 +32,13 @@ const struct device_descriptor usbDeviceDescriptor =
 
 STRING_DESCRIPTOR(usbSupportedLanguages, LANGID_UK);
 STRING_DESCRIPTOR(usbVendor, 'l', 'o', 'p', 'h', 't', 'w', 'a', 'r', 'e');
-STRING_DESCRIPTOR(usbProduct, 'U', 'S', 'B', '2', '.', '0', ' ', 'F', 'u', 'l', 'l', '-', 'S', 'p', 'e', 'e', 'd', ' ', 'T', 'y', 'p', 'e', '-', 'C', ' ', '/', ' ', 'P', 'I', 'C', '3', '2', ' ', 'B', 'r', 'e', 'a', 'k', 'o', 'u', 't', ' ', 'B', 'o', 'a', 'r', 'd');
+STRING_DESCRIPTOR(
+	usbProduct,
+	'U', 'S', 'B', '2', '.', '0', ' ', 'F', 'u', 'l', 'l', '-', 'S', 'p', 'e', 'e', 'd', ' ', 'T', 'y', 'p', 'e', '-', 'C', ' ', '/', ' ', 'P', 'I', 'C', '3', '2', ' ', 'B', 'r', 'e', 'a', 'k', 'o', 'u', 't', ' ', 'B', 'o', 'a', 'r', 'd'
+#ifdef BOARD_VARIANT_LITE
+	, ' ', '(', 'L', 'i', 't', 'e', ')'
+#endif
+);
 NON_CONST_STRING_DESCRIPTOR(usbSerialNumber, '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0');
 NON_CONST_STRING_DESCRIPTOR(usbConfiguration1Name, 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'a', 't', 'i', 'o', 'n', ' ', '1', '\0');
 NON_CONST_STRING_DESCRIPTOR(usbConfiguration2Name, 'C', 'o', 'n', 'f', 'i', 'g', 'u', 'r', 'a', 't', 'i', 'o', 'n', ' ', '2', '\0');
