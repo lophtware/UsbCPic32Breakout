@@ -1,4 +1,4 @@
-![The USB Type-C / PIC32 Breakout Board](doc/board-200x168.png)
+![The USB Type-C / PIC32 Breakout Board](doc/boards-360x168.png)
 
 # USB Type-C / PIC32 Breakout and Development Board
 This is the GitHub repository containing the code, schematics and documentation for the USB Type-C / PIC32 Breakout and Development Board.
@@ -7,8 +7,10 @@ See [Hello, World !](https://github.com/lophtware/UsbCPic32Breakout/wiki/HelloWo
 [wiki](https://github.com/lophtware/UsbCPic32Breakout/wiki/) for project documentation.  The wiki is also mirrored by
 [GitHub Pages](https://lophtware.github.io/) and the company's site is [www.lophtware.co.uk](https://www.lophtware.co.uk/).
 
-Browse the [firmware](src/firmware/) directory for the firmware, the [examples](src/examples/) directory for the examples, or check out the
-[schematics](https://github.com/lophtware/UsbCPic32Breakout/wiki/Schematics.pdf) if you're wanting to roll your own firmware or are just plain curious as to
+Browse the [firmware](src/firmware/) directory for the firmware, the [examples](src/examples/) directory for the examples, or check out the schematics
+([Full Fat](https://github.com/lophtware/UsbCPic32Breakout/wiki/Schematics.pdf)
+and [Lite](https://github.com/lophtware/UsbCPic32Breakout/wiki/Schematics-Lite.pdf))
+if you're wanting to roll your own firmware or are just plain curious as to
 how it works.
 
 ## Implemented Features

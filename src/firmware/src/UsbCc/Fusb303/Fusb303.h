@@ -1,9 +1,9 @@
-#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_FUSB303_FUSB303_H
-#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_FUSB303_FUSB303_H
+#ifndef __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_FUSB303_FUSB303_H
+#define __LOPHTWARE_USBCPIC32BREAKOUT_FIRMWARE_USBCC_FUSB303_FUSB303_H
 #include <stdint.h>
 #include <stdbool.h>
+#include "../../FreeRtos.h"
 #include "../Fusb303.h"
-#include "../FreeRtos.h"
 
 #define BIT(n) (1 << n)
 

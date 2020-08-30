@@ -3,8 +3,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "FreeRtos.h"
-
-#define PINS_NUMBER_CONFIGURABLE 11
+#include "BoardVariants/Pins.h"
 
 #define PIN_NONE { .bank = 0xff, .index = 0xff }
 
@@ -12,42 +11,8 @@
 #define DEFAULT_MASK(reg) (UNCONFIGURABLE_##reg##_MASK | CONFIGURABLE_##reg##_MASK)
 
 #define RA(x) PIN_MASK(x)
-#define UNCONFIGURABLE_A_MASK (RA(0) | RA(1))
-#define CONFIGURABLE_A_MASK (RA(2) | RA(3) | RA(4))
-
-#define DEFAULT_ANSELA_MASK (RA(0) | RA(1) | RA(2) | RA(3))
-#define DEFAULT_TRISA_MASK (RA(0) | RA(1) | RA(2) | RA(3) | RA(4))
-#define DEFAULT_LATA_MASK 0
-#define DEFAULT_ODCA_MASK 0
-#define DEFAULT_CNPUA_MASK 0
-#define DEFAULT_CNPDA_MASK (RA(0) | RA(1) | RA(2) | RA(3) | RA(4))
-
 #define RB(x) PIN_MASK(x)
-#define UNCONFIGURABLE_B_MASK (RB(6) | RB(8) | RB(9) | RB(10) | RB(11) | RB(13) | RB(14) | RB(15))
-#define CONFIGURABLE_B_MASK (RB(0) | RB(1) | RB(2) | RB(3) | RB(4) | RB(5) | RB(7))
-
-#define DEFAULT_ANSELB_MASK (RB(0) | RB(1) | RB(2) | RB(3) | RB(4))
-#define DEFAULT_TRISB_MASK (RB(0) | RB(1) | RB(2) | RB(3) | RB(4) | RB(5) | RB(6) | RB(7) | RB(8) | RB(9) | RB(10) | RB(11) | RB(14) | RB(15))
-#define DEFAULT_LATB_MASK (RB(6))
-#define DEFAULT_ODCB_MASK (RB(6) | RB(8) | RB(9))
-#define DEFAULT_CNPUB_MASK 0
-#define DEFAULT_CNPDB_MASK (RB(0) | RB(1) | RB(4) | RB(5) | RB(7))
-
 #define RC(x) PIN_MASK(x)
-#define UNCONFIGURABLE_C_MASK 0
-#define CONFIGURABLE_C_MASK RC(9)
-
-#define DEFAULT_ANSELC_MASK 0
-#define DEFAULT_TRISC_MASK RC(9)
-#define DEFAULT_LATC_MASK 0
-#define DEFAULT_ODCC_MASK 0
-#define DEFAULT_CNPUC_MASK 0
-#define DEFAULT_CNPDC_MASK (RC(9))
-
-#define CONFIGURABLE_RPOR0_MASK (_RPOR0_RP3R_MASK | _RPOR0_RP4R_MASK)
-#define CONFIGURABLE_RPOR1_MASK (_RPOR1_RP5R_MASK | _RPOR1_RP6R_MASK | _RPOR1_RP7R_MASK | _RPOR1_RP8R_MASK)
-#define CONFIGURABLE_RPOR2_MASK (_RPOR2_RP9R_MASK | _RPOR2_RP10R_MASK | _RPOR2_RP11R_MASK | _RPOR2_RP12R_MASK)
-#define CONFIGURABLE_RPOR4_MASK (_RPOR4_RP18R_MASK)
 
 #define PIN_SINGLE_OP(reg, op, pin) \
 	{ \
@@ -109,6 +74,7 @@ struct PinPeripheralOutputMap
 	uint32_t rpor0;
 	uint32_t rpor1;
 	uint32_t rpor2;
+	uint32_t rpor3;
 	uint32_t rpor4;
 };
 

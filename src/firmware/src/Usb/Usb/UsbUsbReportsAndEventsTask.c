@@ -5,7 +5,7 @@
 #include "UsbUsbInterface.h"
 
 #include "../../EventQueueHeader.h"
-#include "../../Fusb303.h"
+#include "../../UsbCc.h"
 #include "../../FreeRtos.h"
 
 #define CHECKED_FOR_DEDICATED_CHARGING_PORT_MASK (1 << 9)
@@ -15,21 +15,21 @@
 #define PROTOCOL_ERROR_MASK (1 << 13)
 #define CURRENT_CAPABILITY_MASK (1 << 14)
 
-#define FUSB303_CABLE_FLAGS_MASK 0x01ff
+#define USBCC_CABLE_FLAGS_MASK 0x01ff
 
 struct KnownEvents
 {
 	union
 	{
 		struct EventQueueHeader header;
-		struct Fusb303Event fusb303;
+		struct UsbCcEvent cc;
 		struct UsbEvent usb;
 	} as;
 };
 
 static struct
 {
-	uint16_t fusb303CurrentLimitMilliamps;
+	uint16_t ccCurrentLimitMilliamps;
 	uint16_t dedicatedChargerCurrentLimitMilliamps;
 	uint16_t enumeratedCurrentLimitMilliamps;
 	uint16_t applicableCurrentLimitMilliamps;
@@ -46,7 +46,7 @@ QueueHandle_t usbUsbReportsQueue;
 
 void usbUsbReportsAndEventsTask(void *args)
 {
-	usbInitialiseAfterFusb303();
+	usbInitialiseAfterUsbCc();
 
 	static struct KnownEvents event;
 	static uint16_t flagsNonAtomic;
@@ -82,10 +82,10 @@ void usbUsbReportsAndEventsTask(void *args)
 			xQueueReceive(usbFlagsEventQueue, &event, 0);
 			switch (event.as.header.as.raw)
 			{
-				case EVENT_QUEUE_HEADER_WORD_FOR(FUSB303_MODULE_ID, FUSB303_EVENT_FLAGS_CHANGED):
-					flagsNonAtomic &= ~FUSB303_CABLE_FLAGS_MASK;
-					flagsNonAtomic |= event.as.fusb303.as.flagsChanged.flags.all & FUSB303_CABLE_FLAGS_MASK;
-					usbPowerCapability.fusb303CurrentLimitMilliamps = fusb303GetCurrentLimitMilliamps();
+				case EVENT_QUEUE_HEADER_WORD_FOR(USBCC_MODULE_ID, USBCC_EVENT_FLAGS_CHANGED):
+					flagsNonAtomic &= ~USBCC_CABLE_FLAGS_MASK;
+					flagsNonAtomic |= event.as.cc.as.flagsChanged.flags.all & USBCC_CABLE_FLAGS_MASK;
+					usbPowerCapability.ccCurrentLimitMilliamps = usbCcGetCurrentLimitMilliamps();
 					break;
 
 				case EVENT_QUEUE_HEADER_WORD_FOR(USB_MODULE_ID, USB_EVENT_CONFIGURATION_CHANGED):
@@ -123,7 +123,7 @@ void usbUsbReportsAndEventsTask(void *args)
 			usbPowerCapability.applicableCurrentLimitMilliamps = max3(
 				usbPowerCapability.enumeratedCurrentLimitMilliamps,
 				usbPowerCapability.dedicatedChargerCurrentLimitMilliamps,
-				usbPowerCapability.fusb303CurrentLimitMilliamps);
+				usbPowerCapability.ccCurrentLimitMilliamps);
 
 			onUsbFlaggableEvent(flagsNonAtomic);
 		}

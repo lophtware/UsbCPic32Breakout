@@ -96,6 +96,14 @@ void benchTestingTaskToggleAllPinsWithPwmForSeconds(uint16_t seconds, uint8_t pe
 	RPOR2bits.RP11R = ccp4Output;
 	RPOR2bits.RP12R = ccp4Output;
 	RPOR4bits.RP18R = ccp4Output;
+
+#ifdef BOARD_VARIANT_LITE
+	RPOR0bits.RP1R = ccp4Output;
+	RPOR0bits.RP2R = ccp4Output;
+	RPOR3bits.RP13R = ccp4Output;
+	RPOR3bits.RP14R = ccp4Output;
+#endif
+
 	syskeyUnlockThen(benchTestingLockPeripheralPinSelect);
 
 	LATACLR = CONFIGURABLE_A_MASK;
